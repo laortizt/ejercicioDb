@@ -1,11 +1,14 @@
 <?php
 
-    $con=mysql_connect("localhost:3307", "root","");
-    mysql_select_db("torneo",$con);
-    mysql_query("SET NAME  'utf8'");
+    $host="localhost";
+    $port = '3307';
+    $database="futbol";
+    $user='root';
+    $password='';
 
-    // const SERVER="localhost:3307";
-    // const DB="torneo";
-    // const USER="root";
-    // const PASS='';
-    // const SGBD="mysql:host=".SERVER.";dbname=".DB;
+    try{
+        $con = new PDO('mysql:dbname='.$database.';host='.$host.';port='.$port, $user, $password);
+    }catch (PDOException $e){
+       echo "Error ".$e->getMessage();
+    }
+?>
